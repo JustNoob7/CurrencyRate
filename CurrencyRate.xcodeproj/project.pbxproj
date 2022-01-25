@@ -14,6 +14,7 @@
 		5384402827A02FA500945CBC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5384402627A02FA500945CBC /* LaunchScreen.storyboard */; };
 		5384403027A0306900945CBC /* CurrenciesListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5384402F27A0306900945CBC /* CurrenciesListViewController.swift */; };
 		5384403227A031D600945CBC /* CurrenciesInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5384403127A031D600945CBC /* CurrenciesInfo.swift */; };
+		5384403927A0369600945CBC /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5384403827A0369600945CBC /* NetworkManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 		5384402927A02FA500945CBC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5384402F27A0306900945CBC /* CurrenciesListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrenciesListViewController.swift; sourceTree = "<group>"; };
 		5384403127A031D600945CBC /* CurrenciesInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrenciesInfo.swift; sourceTree = "<group>"; };
+		5384403827A0369600945CBC /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,6 +61,7 @@
 			isa = PBXGroup;
 			children = (
 				5384403427A0357200945CBC /* ViewControllers */,
+				5384403A27A036BD00945CBC /* Services */,
 				5384403527A0358500945CBC /* Models */,
 				5384403627A0358F00945CBC /* Storyboards */,
 				5384403327A0353B00945CBC /* App */,
@@ -108,6 +111,14 @@
 				5384402427A02FA500945CBC /* Assets.xcassets */,
 			);
 			path = Resources;
+			sourceTree = "<group>";
+		};
+		5384403A27A036BD00945CBC /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				5384403827A0369600945CBC /* NetworkManager.swift */,
+			);
+			path = Services;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -183,6 +194,7 @@
 			files = (
 				5384403027A0306900945CBC /* CurrenciesListViewController.swift in Sources */,
 				5384401C27A02FA300945CBC /* AppDelegate.swift in Sources */,
+				5384403927A0369600945CBC /* NetworkManager.swift in Sources */,
 				5384403227A031D600945CBC /* CurrenciesInfo.swift in Sources */,
 				5384401E27A02FA300945CBC /* SceneDelegate.swift in Sources */,
 			);

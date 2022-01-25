@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct CurrenciesInfo {
+struct CurrenciesInfo:Decodable {
     let Date: String?
     let PreviousDate: String?
     let PreviousURL: String?
@@ -15,7 +15,7 @@ struct CurrenciesInfo {
     let Valute: [String: Valute]
 }
 
-struct Valute {
+struct Valute:Decodable {
     let ID: String?
     let NumCode: String?
     let CharCode: String?
