@@ -9,21 +9,23 @@
 /* Begin PBXBuildFile section */
 		5384401C27A02FA300945CBC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5384401B27A02FA300945CBC /* AppDelegate.swift */; };
 		5384401E27A02FA300945CBC /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5384401D27A02FA300945CBC /* SceneDelegate.swift */; };
-		5384402027A02FA300945CBC /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5384401F27A02FA300945CBC /* ViewController.swift */; };
 		5384402327A02FA300945CBC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5384402127A02FA300945CBC /* Main.storyboard */; };
 		5384402527A02FA500945CBC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5384402427A02FA500945CBC /* Assets.xcassets */; };
 		5384402827A02FA500945CBC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5384402627A02FA500945CBC /* LaunchScreen.storyboard */; };
+		5384403027A0306900945CBC /* CurrenciesListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5384402F27A0306900945CBC /* CurrenciesListViewController.swift */; };
+		5384403227A031D600945CBC /* CurrenciesInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5384403127A031D600945CBC /* CurrenciesInfo.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		5384401827A02FA300945CBC /* CurrencyRate.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CurrencyRate.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5384401B27A02FA300945CBC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5384401D27A02FA300945CBC /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		5384401F27A02FA300945CBC /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		5384402227A02FA300945CBC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		5384402427A02FA500945CBC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5384402727A02FA500945CBC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		5384402927A02FA500945CBC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5384402F27A0306900945CBC /* CurrenciesListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrenciesListViewController.swift; sourceTree = "<group>"; };
+		5384403127A031D600945CBC /* CurrenciesInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrenciesInfo.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,7 +60,8 @@
 			children = (
 				5384401B27A02FA300945CBC /* AppDelegate.swift */,
 				5384401D27A02FA300945CBC /* SceneDelegate.swift */,
-				5384401F27A02FA300945CBC /* ViewController.swift */,
+				5384402F27A0306900945CBC /* CurrenciesListViewController.swift */,
+				5384403127A031D600945CBC /* CurrenciesInfo.swift */,
 				5384402127A02FA300945CBC /* Main.storyboard */,
 				5384402427A02FA500945CBC /* Assets.xcassets */,
 				5384402627A02FA500945CBC /* LaunchScreen.storyboard */,
@@ -138,8 +141,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5384402027A02FA300945CBC /* ViewController.swift in Sources */,
+				5384403027A0306900945CBC /* CurrenciesListViewController.swift in Sources */,
 				5384401C27A02FA300945CBC /* AppDelegate.swift in Sources */,
+				5384403227A031D600945CBC /* CurrenciesInfo.swift in Sources */,
 				5384401E27A02FA300945CBC /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -306,7 +310,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -334,7 +338,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
