@@ -58,16 +58,56 @@
 		5384401A27A02FA300945CBC /* CurrencyRate */ = {
 			isa = PBXGroup;
 			children = (
-				5384401B27A02FA300945CBC /* AppDelegate.swift */,
-				5384401D27A02FA300945CBC /* SceneDelegate.swift */,
-				5384402F27A0306900945CBC /* CurrenciesListViewController.swift */,
-				5384403127A031D600945CBC /* CurrenciesInfo.swift */,
-				5384402127A02FA300945CBC /* Main.storyboard */,
-				5384402427A02FA500945CBC /* Assets.xcassets */,
-				5384402627A02FA500945CBC /* LaunchScreen.storyboard */,
-				5384402927A02FA500945CBC /* Info.plist */,
+				5384403427A0357200945CBC /* ViewControllers */,
+				5384403527A0358500945CBC /* Models */,
+				5384403627A0358F00945CBC /* Storyboards */,
+				5384403327A0353B00945CBC /* App */,
+				5384403727A035BC00945CBC /* Resources */,
 			);
 			path = CurrencyRate;
+			sourceTree = "<group>";
+		};
+		5384403327A0353B00945CBC /* App */ = {
+			isa = PBXGroup;
+			children = (
+				5384401B27A02FA300945CBC /* AppDelegate.swift */,
+				5384401D27A02FA300945CBC /* SceneDelegate.swift */,
+				5384402927A02FA500945CBC /* Info.plist */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		5384403427A0357200945CBC /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				5384402F27A0306900945CBC /* CurrenciesListViewController.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		5384403527A0358500945CBC /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				5384403127A031D600945CBC /* CurrenciesInfo.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		5384403627A0358F00945CBC /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				5384402127A02FA300945CBC /* Main.storyboard */,
+				5384402627A02FA500945CBC /* LaunchScreen.storyboard */,
+			);
+			path = Storyboards;
+			sourceTree = "<group>";
+		};
+		5384403727A035BC00945CBC /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				5384402427A02FA500945CBC /* Assets.xcassets */,
+			);
+			path = Resources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -295,7 +335,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 292XY44XLL;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = CurrencyRate/Info.plist;
+				INFOPLIST_FILE = CurrencyRate/App/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -323,7 +363,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 292XY44XLL;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = CurrencyRate/Info.plist;
+				INFOPLIST_FILE = CurrencyRate/App/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
