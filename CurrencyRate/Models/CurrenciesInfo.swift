@@ -7,20 +7,38 @@
 
 import Foundation
 
-struct CurrenciesInfo:Decodable {
-    let Date: String?
-    let PreviousDate: String?
-    let PreviousURL: String?
-    let Timestamp: String
-    let Valute: [String: Valute]
+struct CurrenciesInfo: Decodable {
+    let date: String?
+    let previousDate: String?
+    let previousURL: String?
+    let timestamp: String
+    let valute: [String: Valute]
+    
+    enum CodingKeys: String, CodingKey {
+        case date = "Date"
+        case previousDate = "PreviousDate"
+        case previousURL = "PreviousURL"
+        case timestamp = "Timestamp"
+        case valute = "Valute"
+    }
 }
 
-struct Valute:Decodable {
-    let ID: String?
-    let NumCode: String?
-    let CharCode: String?
-    let Nominal: Int?
-    let Name: String?
-    let Value: Double?
-    let Previous: Double?
+struct Valute: Decodable {
+    let id: String?
+    let numCode: String?
+    let charCode: String?
+    let nominal: Int?
+    let name: String?
+    let value: Double?
+    let previous: Double?
+    
+    enum CodingKeys: String, CodingKey {
+        case id = "ID"
+        case numCode = "NumCode"
+        case charCode = "CharCode"
+        case nominal = "Nominal"
+        case name = "Name"
+        case value = "Value"
+        case previous = "Previous"
+    }
 }
