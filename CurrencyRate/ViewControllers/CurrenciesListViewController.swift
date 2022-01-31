@@ -15,6 +15,10 @@ class CurrenciesListViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        getCurrencies()
+    }
+    
+    private func getCurrencies() {
         NetworkManager.shared.fetchCurrencies(from: url) { result in
             switch result {
             case .success(let currenciesInfo):
@@ -26,9 +30,10 @@ class CurrenciesListViewController: UITableViewController {
             }
         }
     }
+}
 
-    // MARK: - Table view data source
-
+// MARK: - Table view data source
+extension CurrenciesListViewController {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         currencies.count
     }
@@ -40,5 +45,4 @@ class CurrenciesListViewController: UITableViewController {
         cell.contentConfiguration = content
         return cell
     }
-
 }
