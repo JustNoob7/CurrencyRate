@@ -15,7 +15,7 @@ class CurrenciesListViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        tableView.rowHeight = 60
+        tableView.rowHeight = 85
         getCurrencies()
     }
     
