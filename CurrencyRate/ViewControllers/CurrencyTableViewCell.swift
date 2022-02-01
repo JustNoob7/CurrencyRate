@@ -11,6 +11,7 @@ class CurrencyTableViewCell: UITableViewCell {
     
     @IBOutlet var nameLabel: UILabel!
     @IBOutlet var exchangeLabel: UILabel!
+    @IBOutlet var valueLabel: UILabel!
     @IBOutlet var changesLabel: UILabel!
     @IBOutlet var changesImageView: UIImageView!
     
@@ -19,15 +20,20 @@ class CurrencyTableViewCell: UITableViewCell {
         exchangeLabel.text = "\(currency.nominal) \(currency.name)"
         
         let formattedValue = String(format: "%.2f", currency.value)
+        valueLabel.text = "\(formattedValue)р."
+        
+        let difference = currency.value - currency.previous
+        changesLabel.text = String(format: "%.2f", difference)
 
         if currency.value > currency.previous {
-            changesLabel.text = "\(formattedValue)"
             changesImageView.image = UIImage(systemName: "arrowtriangle.up.fill")
             changesImageView.tintColor = .green
+            changesLabel.textColor = .green
         } else {
-            changesLabel.text = "\(formattedValue)"
             changesImageView.image = UIImage(systemName: "arrowtriangle.down.fill")
             changesImageView.tintColor = .red
+            changesLabel.textColor = .red
         }
+        
     }
 }
