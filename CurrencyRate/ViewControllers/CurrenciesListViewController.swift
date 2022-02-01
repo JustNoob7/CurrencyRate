@@ -15,6 +15,7 @@ class CurrenciesListViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        tableView.rowHeight = 60
         getCurrencies()
     }
     
@@ -39,10 +40,13 @@ extension CurrenciesListViewController {
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "currency", for: indexPath)
-        var content = cell.defaultContentConfiguration()
-        content.text = currencies[indexPath.row].name
-        cell.contentConfiguration = content
+        let cell = tableView.dequeueReusableCell(withIdentifier: "currency", for: indexPath) as! CurrencyTableViewCell
+        let currency = currencies[indexPath.row]
+        cell.configure(with: currency)
         return cell
+    }
+// MARK: - Table view delegate
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
     }
 }
