@@ -15,10 +15,11 @@ class CurrenciesListViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        tableView.rowHeight = 85
+        tableView.rowHeight = 80
         getCurrencies()
     }
     
+//MARK: - Private methods
     private func getCurrencies() {
         NetworkManager.shared.fetchCurrencies(from: url) { result in
             switch result {
