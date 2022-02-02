@@ -24,7 +24,7 @@ class CurrenciesListViewController: UITableViewController {
         NetworkManager.shared.fetchCurrencies(from: url) { result in
             switch result {
             case .success(let currenciesInfo):
-                self.title = "Курс на \(self.makeDate(from: currenciesInfo.date))"
+                self.navigationController?.navigationBar.topItem?.title = "Курс на \(self.makeDate(from: currenciesInfo.date))"
                 self.currencies = currenciesInfo.valute.map { $0.value }
                 self.tableView.reloadData()
             case .failure(let error):
@@ -57,5 +57,16 @@ extension CurrenciesListViewController {
 // MARK: - Table view delegate
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
+    }
+    
+    override func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        let currency = currencies[indexPath.row]
+        
+        let addToFavorites = UIContextualAction(style: .normal, title: "Add to favorites") { _, _, isDone in
+            StorageManager.shared.saveCurrency(currency: currency)
+            isDone(true)
+        }
+        
+        return UISwipeActionsConfiguration(actions: [addToFavorites])
     }
 }
