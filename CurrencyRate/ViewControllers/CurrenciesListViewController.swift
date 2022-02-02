@@ -23,13 +23,21 @@ class CurrenciesListViewController: UITableViewController {
         NetworkManager.shared.fetchCurrencies(from: url) { result in
             switch result {
             case .success(let currenciesInfo):
+                self.title = "Курс на \(self.makeDate(from: currenciesInfo.date))"
                 self.currencies = currenciesInfo.valute.map { $0.value }
                 self.tableView.reloadData()
-                self.title = currenciesInfo.date
             case .failure(let error):
                 print(error)
             }
         }
+    }
+    
+    private func makeDate(from date: String) -> String {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
+        guard let date = formatter.date(from: date) else { return ""}
+        formatter.dateFormat = "dd.MM.yyyy"
+        return formatter.string(from: date)
     }
 }
 

@@ -8,7 +8,7 @@
 import Foundation
 
 struct CurrenciesInfo: Decodable {
-    let date: String?
+    let date: String
     let previousDate: String?
     let previousURL: String?
     let timestamp: String
