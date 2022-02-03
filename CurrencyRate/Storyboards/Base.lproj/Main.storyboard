@@ -104,7 +104,7 @@
             </objects>
             <point key="canvasLocation" x="1125" y="-192"/>
         </scene>
-        <!--Favorites-->
+        <!--Title-->
         <scene sceneID="3pU-eT-ont">
             <objects>
                 <tableViewController id="8tb-lI-g78" customClass="FavoritesTableViewController" customModule="CurrencyRate" customModuleProvider="target" sceneMemberID="viewController">
@@ -195,6 +195,7 @@
                         </connections>
                     </tableView>
                     <tabBarItem key="tabBarItem" title="Favorites" image="heart.fill" catalog="system" id="e33-Xl-DZ6"/>
+                    <navigationItem key="navigationItem" title="Title" id="JMr-BP-IQE"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1Yt-8H-DV6" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

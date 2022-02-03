@@ -14,12 +14,13 @@ class FavoritesTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.rowHeight = 80
-        self.navigationController?.navigationBar.topItem?.title = "Избранное"
+        navigationController?.navigationBar.topItem?.title = "Избранное"
         getFavorites()
     }
 
     private func getFavorites() {
         favoriteCurrencies = StorageManager.shared.fetchCurrencies()
+        tableView.reloadData()
     }
    
 }
@@ -35,5 +36,14 @@ extension FavoritesTableViewController {
         let currency = favoriteCurrencies[indexPath.row]
         cell.configure(with: currency)
         return cell
+    }
+    
+// MARK: - Table view delegate
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle ==  .delete {
+            StorageManager.shared.deleteCurrency(at: indexPath.row)
+            favoriteCurrencies.remove(at: indexPath.row)
+            tableView.deleteRows(at: [indexPath], with: .automatic)
+        }
     }
 }
