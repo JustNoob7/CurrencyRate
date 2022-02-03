@@ -14,8 +14,11 @@ class FavoritesTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.rowHeight = 80
-        navigationController?.navigationBar.topItem?.title = "Избранное"
         getFavorites()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        navigationController?.navigationBar.topItem?.title = "Избранное"
     }
 
     private func getFavorites() {

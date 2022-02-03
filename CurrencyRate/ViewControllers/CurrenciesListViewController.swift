@@ -19,6 +19,10 @@ class CurrenciesListViewController: UITableViewController {
         getCurrencies()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        getCurrencies()
+    }
+    
 //MARK: - Private methods
     private func getCurrencies() {
         NetworkManager.shared.fetchCurrencies(from: url) { result in
