@@ -20,8 +20,6 @@ struct CurrenciesInfo: Codable {
 }
 
 struct Valute: Codable {
-    let id: String?
-    let numCode: String?
     let charCode: String
     let nominal: Int
     let name: String
@@ -29,8 +27,6 @@ struct Valute: Codable {
     let previous: Double
     
     enum CodingKeys: String, CodingKey {
-        case id = "ID"
-        case numCode = "NumCode"
         case charCode = "CharCode"
         case nominal = "Nominal"
         case name = "Name"
