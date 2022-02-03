@@ -19,10 +19,6 @@ class CurrenciesListViewController: UITableViewController {
         getCurrencies()
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        getCurrencies()
-    }
-    
 //MARK: - Private methods
     private func getCurrencies() {
         NetworkManager.shared.fetchCurrencies(from: url) { result in
@@ -44,6 +40,16 @@ class CurrenciesListViewController: UITableViewController {
         formatter.dateFormat = "dd.MM.yyyy"
         return formatter.string(from: date)
     }
+    
+    private func showAlert(title: String, message: String) {
+        let alert = UIAlertController(title: title,
+                                      message: message,
+                                      preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "OK", style: .default)
+        alert.addAction(okAction)
+        present(alert, animated: true)
+        
+    }
 }
 
 // MARK: - Table view data source
@@ -58,16 +64,23 @@ extension CurrenciesListViewController {
         cell.configure(with: currency)
         return cell
     }
+    
 // MARK: - Table view delegate
+    
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
     }
     
     override func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         let currency = currencies[indexPath.row]
-        
+                
         let addToFavorites = UIContextualAction(style: .normal, title: "Add to favorites") { _, _, isDone in
-            StorageManager.shared.saveCurrency(currency: currency)
+            if StorageManager.shared.checkAddition(currency: currency) {
+                self.showAlert(title: "Ooops", message: "It is already in favorites")
+            } else {
+                StorageManager.shared.saveCurrency(currency: currency)
+                self.showAlert(title: "Yeeeey", message: "Successfully added")
+            }
             isDone(true)
         }
         

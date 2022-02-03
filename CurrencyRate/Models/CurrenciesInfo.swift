@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct CurrenciesInfo: Codable {
+struct CurrenciesInfo: Codable, Equatable {
     let date: String
     let previousURL: String
     let valute: [String: Valute]
@@ -19,7 +19,7 @@ struct CurrenciesInfo: Codable {
     }
 }
 
-struct Valute: Codable {
+struct Valute: Codable, Equatable {
     let charCode: String
     let nominal: Int
     let name: String

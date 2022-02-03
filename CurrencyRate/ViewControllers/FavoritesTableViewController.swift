@@ -17,15 +17,10 @@ class FavoritesTableViewController: UITableViewController {
         getFavorites()
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        navigationController?.navigationBar.topItem?.title = "Избранное"
-    }
-
     private func getFavorites() {
         favoriteCurrencies = StorageManager.shared.fetchCurrencies()
-        tableView.reloadData()
     }
-   
+
 }
 // MARK: - Table view data source
 extension FavoritesTableViewController {
@@ -48,5 +43,8 @@ extension FavoritesTableViewController {
             favoriteCurrencies.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .automatic)
         }
+    }
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
     }
 }

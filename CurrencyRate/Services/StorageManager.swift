@@ -5,7 +5,7 @@
 //  Created by Ярослав Бойко on 02.02.2022.
 //
 
-import Foundation
+import UIKit
 
 final class StorageManager {
     
@@ -34,5 +34,14 @@ final class StorageManager {
         currencies.remove(at: index)
         guard let data = try? JSONEncoder().encode(currencies) else { return }
         userDefaults.set(data, forKey: key)
+    }
+    
+    func checkAddition(currency: Valute) -> Bool {
+        let currencies = fetchCurrencies()
+        if currencies.contains(currency) {
+            return true
+        } else {
+            return false
+        }
     }
 }
