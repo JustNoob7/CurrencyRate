@@ -17,10 +17,14 @@ class FavoritesTableViewController: UITableViewController {
         getFavorites()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        getFavorites()
+        tableView.reloadData()
+    }
+    
     private func getFavorites() {
         favoriteCurrencies = StorageManager.shared.fetchCurrencies()
     }
-
 }
 // MARK: - Table view data source
 extension FavoritesTableViewController {
