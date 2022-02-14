@@ -21,12 +21,12 @@ class CurrenciesListViewController: UITableViewController {
     
 //MARK: - Private methods
     private func getCurrencies() {
-        NetworkManager.shared.fetchCurrencies(from: url) { result in
+        NetworkManager.shared.fetchCurrencies(from: url) { [unowned self] result in
             switch result {
             case .success(let currenciesInfo):
-                self.navigationController?.navigationBar.topItem?.title = "Курс на \(self.makeDate(from: currenciesInfo.date))"
-                self.currencies = currenciesInfo.valute.map { $0.value }
-                self.tableView.reloadData()
+                navigationController?.navigationBar.topItem?.title = "Курс на \(makeDate(from: currenciesInfo.date))"
+                currencies = currenciesInfo.valute.map { $0.value }
+                tableView.reloadData()
             case .failure(let error):
                 print(error)
             }

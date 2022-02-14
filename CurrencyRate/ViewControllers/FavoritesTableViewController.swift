@@ -18,6 +18,7 @@ class FavoritesTableViewController: UITableViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         getFavorites()
         tableView.reloadData()
     }
