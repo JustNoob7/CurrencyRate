@@ -9,14 +9,25 @@ import UIKit
 
 class CurrenciesListViewController: UITableViewController {
     
-    let url = "https://www.cbr-xml-daily.ru/daily_json.js"
+    private let url = "https://www.cbr-xml-daily.ru/daily_json.js"
+    private let searchController = UISearchController(searchResultsController: nil)
     
-    var currencies: [Valute] = []
+    private var currencies: [Valute] = []
+    private var filteredCurrencies: [Valute] = []
+    
+    private var searchBarIsEmpty: Bool {
+        guard let text = searchController.searchBar.text else { return false }
+        return text.isEmpty
+    }
+    private var isFiltering: Bool {
+        return searchController.isActive && !searchBarIsEmpty
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.rowHeight = 80
         getCurrencies()
+        setupSearchController()
     }
     
 //MARK: - Private methods
@@ -50,29 +61,36 @@ class CurrenciesListViewController: UITableViewController {
         present(alert, animated: true)
         
     }
+    
+    private func setupSearchController() {
+        searchController.searchResultsUpdater = self
+        searchController.obscuresBackgroundDuringPresentation = false
+        searchController.searchBar.placeholder = "Search"
+        navigationItem.searchController = searchController
+        definesPresentationContext = true
+    }
 }
 
 // MARK: - Table view data source
 extension CurrenciesListViewController {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        currencies.count
+        isFiltering ? filteredCurrencies.count : currencies.count
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "currency", for: indexPath) as! CurrencyTableViewCell
-        let currency = currencies[indexPath.row]
+        
+        let currency = isFiltering ? filteredCurrencies[indexPath.row] : currencies[indexPath.row]
+        
         cell.configure(with: currency)
         return cell
     }
     
 // MARK: - Table view delegate
     
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        tableView.deselectRow(at: indexPath, animated: true)
-    }
     
     override func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
-        let currency = currencies[indexPath.row]
+        let currency = isFiltering ? filteredCurrencies[indexPath.row] : currencies[indexPath.row]
                 
         let addToFavorites = UIContextualAction(style: .normal, title: "Add to favorites") { _, _, isDone in
             if StorageManager.shared.checkAddition(currency: currency) {
@@ -85,5 +103,22 @@ extension CurrenciesListViewController {
         }
         
         return UISwipeActionsConfiguration(actions: [addToFavorites])
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+    }
+}
+
+// MARK: - UISearchResultsUpdating
+extension CurrenciesListViewController: UISearchResultsUpdating {
+    
+    func updateSearchResults(for searchController: UISearchController) {
+        filterContentForSearchText(searchController.searchBar.text!)
+    }
+    
+    private func filterContentForSearchText(_ searchText: String) {
+        filteredCurrencies = currencies.filter{ $0.name.lowercased().contains(searchText.lowercased()) }
+        tableView.reloadData()
     }
 }
