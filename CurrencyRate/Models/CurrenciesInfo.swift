@@ -33,4 +33,8 @@ struct Valute: Codable, Equatable {
         case value = "Value"
         case previous = "Previous"
     }
+    
+    static func ==(lhs: Valute, rhs: Valute) -> Bool {
+        lhs.charCode == rhs.charCode
+    }
 }

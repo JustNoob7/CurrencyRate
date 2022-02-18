@@ -25,6 +25,8 @@ class CurrenciesListViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        tableView.register(UINib(nibName: CurrencyTableViewCell.identifier, bundle: nil),
+                           forCellReuseIdentifier: CurrencyTableViewCell.identifier)
         tableView.rowHeight = 80
         getCurrencies()
         setupSearchController()
@@ -78,20 +80,21 @@ extension CurrenciesListViewController {
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "currency", for: indexPath) as! CurrencyTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: CurrencyTableViewCell.identifier, for: indexPath) as! CurrencyTableViewCell
         
         let currency = isFiltering ? filteredCurrencies[indexPath.row] : currencies[indexPath.row]
         
         cell.configure(with: currency)
+        
         return cell
     }
     
 // MARK: - Table view delegate
     
-    
     override func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+
         let currency = isFiltering ? filteredCurrencies[indexPath.row] : currencies[indexPath.row]
-                
+
         let addToFavorites = UIContextualAction(style: .normal, title: "Add to favorites") { _, _, isDone in
             if StorageManager.shared.checkAddition(currency: currency) {
                 self.showAlert(title: "Ooops", message: "It is already in favorites")
@@ -101,7 +104,7 @@ extension CurrenciesListViewController {
             }
             isDone(true)
         }
-        
+
         return UISwipeActionsConfiguration(actions: [addToFavorites])
     }
     

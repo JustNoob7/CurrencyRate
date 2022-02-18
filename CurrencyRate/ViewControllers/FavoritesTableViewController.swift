@@ -13,6 +13,8 @@ class FavoritesTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        tableView.register(UINib(nibName: CurrencyTableViewCell.identifier, bundle: nil),
+                           forCellReuseIdentifier: CurrencyTableViewCell.identifier)
         tableView.rowHeight = 80
         getFavorites()
     }
@@ -35,9 +37,12 @@ extension FavoritesTableViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "favoriteCurrency", for: indexPath) as! FavoriteCurrencyTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: CurrencyTableViewCell.identifier, for: indexPath) as! CurrencyTableViewCell
+        
         let currency = favoriteCurrencies[indexPath.row]
+        
         cell.configure(with: currency)
+        
         return cell
     }
     
@@ -49,6 +54,7 @@ extension FavoritesTableViewController {
             tableView.deleteRows(at: [indexPath], with: .automatic)
         }
     }
+    
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
     }

@@ -2,18 +2,21 @@
 //  CurrencyTableViewCell.swift
 //  CurrencyRate
 //
-//  Created by Ярослав Бойко on 01.02.2022.
+//  Created by Ярослав Бойко on 18.02.2022.
 //
 
 import UIKit
 
 class CurrencyTableViewCell: UITableViewCell {
     
-    @IBOutlet var nameLabel: UILabel!
-    @IBOutlet var exchangeLabel: UILabel!
-    @IBOutlet var valueLabel: UILabel!
-    @IBOutlet var changesLabel: UILabel!
-    @IBOutlet var changesImageView: UIImageView!
+    @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var valueLabel: UILabel!
+    @IBOutlet weak var exchangeLabel: UILabel!
+    @IBOutlet weak var differenceLabel: UILabel!
+    
+    @IBOutlet weak var changesImageView: UIImageView!
+    
+    static let identifier = "CurrencyTableViewCell"
     
     func configure(with currency: Valute) {
         nameLabel.text = currency.charCode
@@ -23,17 +26,17 @@ class CurrencyTableViewCell: UITableViewCell {
         valueLabel.text = "\(formattedValue)р."
         
         let difference = currency.value - currency.previous
-        changesLabel.text = String(format: "%.2f", difference)
+        differenceLabel.text = String(format: "%.2f", difference)
 
         if currency.value > currency.previous {
             changesImageView.image = UIImage(systemName: "arrowtriangle.up.fill")
             changesImageView.tintColor = .green
-            changesLabel.textColor = .green
+            differenceLabel.textColor = .green
         } else {
             changesImageView.image = UIImage(systemName: "arrowtriangle.down.fill")
             changesImageView.tintColor = .red
-            changesLabel.textColor = .red
+            differenceLabel.textColor = .red
         }
-        
     }
+    
 }
